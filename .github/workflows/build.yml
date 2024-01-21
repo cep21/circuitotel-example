@@ -31,5 +31,12 @@ jobs:
         run: env "GORACE=halt_on_error=1" go test -v -race ./...
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
-      - name: Output coverage
-        run: go test -v -covermode=count -coverprofile=coverage.out ./...
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build the Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
