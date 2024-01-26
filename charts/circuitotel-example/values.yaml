@@ -39,6 +39,8 @@ securityContext:
   runAsNonRoot: true
   runAsUser: 1000
 
+collector: "" # Set this to something like localhost:30080 if you are running the local otel collector
+
 service:
   type: ClusterIP
   port: 80

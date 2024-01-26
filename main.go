@@ -24,7 +24,7 @@ import (
 
 func main() {
 	interval := flag.Duration("interval", time.Millisecond*1000, "Setup duration between metric ticks")
-	flag.StringVar(&collectorEndpoint, "collector", "", "Collector endpoint")
+	flag.StringVar(&collectorEndpoint, "collector", os.Getenv("COLLECTOR"), "Collector endpoint")
 	flag.Parse()
 	ctx := context.Background()
 	serviceName := "circuit"
